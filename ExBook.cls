@@ -42,6 +42,9 @@
 \newif\if@showmark  \@showmarkfalse
 \DeclareOption{showmark}{\@showmarktrue}
 
+% 是否显示题目答案
+\newif\if@enableSolution  \@enableSolutionfalse
+
 % 定义默认页面格式
 \def\@pageformat{standard}
 \newcommand{\myPageFormat}{1}
@@ -97,6 +100,10 @@
 \RequirePackage{xkeyval}
 \RequirePackage{pgfmath} % 导入随机数生成包
 \RequirePackage{truncate}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable}   % 允许 tcolorbox 跨页
+\tcbuselibrary{skins}
+\RequirePackage{environ}    % 用于定义环境
 
 \usetikzlibrary{fadings}
 \usetikzlibrary{shapes, positioning}
@@ -184,6 +191,23 @@
     \fi
 }
 
+% 设置答案显示变量
+\newcommand{\showSolution}{showSolution}
+\newcommand{\hideSolution}{hideSolution}
+
+% 设置答案显示命令
+\newcommand{\setSolutionDisplay}[1]{%
+    \ifx#1\showSolution
+    \@enableSolutiontrue % 显示答案
+    \else
+    \ifx#1\hideSolution
+    \@enableSolutionfalse % 隐藏答案
+    \else
+    \@enableSolutionfalse % 默认隐藏答案
+    \fi
+    \fi
+}
+
 \definecolor{bg}{HTML}{212121} % 自定义颜色 
 
 \if@darkmode
@@ -219,11 +243,11 @@
 \def\ExBook@value@TitleDescription{\textbf{此处填写副标题}}
 \def\ExBook@value@TypeOne{\textbf{A4紧凑版}}
 \def\ExBook@value@TypeTwo{\textbf{A4标准版}}
-\def\ExBoo(k)value@TypeThree{\textbf{横版Pad版}}
+\def\ExBook@value@TypeThree{\textbf{横版Pad版}}
 \def\ExBook@value@TypeFour{\textbf{A4宽松版}}
 \def\ExBook@value@TypeFive{\textbf{A4单题版}}
 \def\ExBook@value@TypeSix{\textbf{竖版Pad版}}
-\def\ExBook@value@motto{\kaishu “心无旁骛，行稳致远。”}
+\def\ExBook@value@motto{\kaishu "心无旁骛，行稳致远。"}
 \def\ExBook@value@Creator{\textbf{研小布}}
 \def\ExBook@value@UpdateTime{\textbf{最后更新时间：\today}}
 
@@ -245,7 +269,7 @@
 \newcommand\TypeFour[1]{\def\ExBook@value@TypeFour{\textbf{#1}}}
 \newcommand\TypeFive[1]{\def\ExBook@value@TypeFive{\textbf{#1}}}
 \newcommand\TypeSix[1]{\def\ExBook@value@TypeSix{\textbf{#1}}}
-\newcommand\motto[1]{\def\ExBook@value@motto{\kaishu “#1”}}
+\newcommand\motto[1]{\def\ExBook@value@motto{\kaishu "#1"}}
 \newcommand\Creator[1]{\def\ExBook@value@Creator{\textbf{#1}}}
 \newcommand\UpdateTime[1]{\def\ExBook@value@UpdateTime{\textbf{最后更新时间：#1}}}
 \newcommand\Lhead[1]{\def\ExBook@value@Lhead{\textbf{#1}}}
@@ -268,6 +292,50 @@
 \newcommand{\blankline}{\underline{\hspace{3em}}} % 空白下划线
 \newcommand{\noreftitle}[1]{\par \textbf{#1} \par} % 无索引标题
 \newcommand{\onlinecheckurl}{\ExBook@value@onlineCheckUrl} % 空白下划线
+
+% 答案显示相关命令
+\NewEnviron{solution}{%
+    \makeatletter
+    \if@enableSolution
+        \par\medskip\noindent
+        \if@darkmode
+            \begin{tcolorbox}[
+                breakable,
+                boxrule=0.5pt,
+                arc=2mm,
+                boxsep=4pt,
+                left=2pt,
+                right=2pt,
+                colback=bg!60!black,
+                colframe=themeColor,
+                title={\heiti\bfseries 解答},
+                fonttitle=\bfseries,
+                colbacktitle=themeColor,
+                coltitle=white
+            ]
+            \BODY
+            \end{tcolorbox}
+        \else
+            \begin{tcolorbox}[
+                breakable,
+                boxrule=0.5pt,
+                arc=2mm,
+                boxsep=4pt,
+                left=2pt,
+                right=2pt,
+                colback=themeColor!5!white,
+                colframe=themeColor,
+                title={\heiti\bfseries 解答},
+                fonttitle=\bfseries,
+                colbacktitle=themeColor,
+                coltitle=white
+            ]
+            \BODY
+            \end{tcolorbox}
+        \fi
+    \fi
+    \makeatother
+}
 
 % 定义一个只隐藏当前页的页眉和页脚的命令
 \newcommand{\hideheaderfooter}{
