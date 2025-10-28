@@ -1,0 +1,243 @@
+% 张宇预测卷 - 第1套 错题本
+% 使用 ExBook 文档类，A4标准版本
+\documentclass[standard]{ExBook} 
+
+% 在 document 之前设置主题颜色
+\setThemeColor{\blue}
+
+% 加载解答显示配置（可在 solution_config.tex 中切换显示/隐藏）
+\input{solution_config}
+
+\begin{document}
+
+% 封面设置
+\CoverImg{img/cover.jpg}
+\PreTitle{张宇预测卷}
+\Title{第1套·填空选择题}
+\TitleDescription{考研数学错题本}
+\Creator{学生}
+\UpdateTime{2025年10月28日}
+
+% 页眉页脚设置
+\Lhead{张宇预测卷}
+\Chead{第1套}
+\Rhead{填空选择题}
+
+% 加载封面
+\maketitle 
+
+\setcounter{page}{1}
+\tableofcontents 
+    
+\clearpage 
+
+\section{张宇预测卷·第1套}
+\subsection{填空题和选择题}
+
+\begin{qitems}
+
+    \begin{bbox}
+        \qitem 设总体$X\sim N(\mu,1)$，$H_0:\mu=0, H_1:\mu=1$. 来自总体$X$的样本容量为$9$的简单随机样本均值为$\bar{X}$，设拒绝域为$W=\{\bar{X}\ge 0.55\}$，则不犯第二类错误的概率为
+        \begin{itemize}
+            \item[A.] $1-\Phi(1.35)$
+            \item[B.] $\Phi(1.35)$
+            \item[C.] $\Phi(1.65)$
+            \item[D.] $1-\Phi(1.65)$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 理解第二类错误及其概率}
+            \begin{itemize}
+                \item 第二类错误（Type II Error）是指原假设$H_0$不成立，但我们没有拒绝$H_0$（即接受了$H_0$）。
+                \item 犯第二类错误的概率通常记为$\beta$。
+                \item $\beta = P(\text{接受 } H_0 | H_1 \text{ 为真})$。
+                \item 本题要求的是"不犯第二类错误的概率"，这个概率就是统计检验中的\textbf{功效（Power）}，等于$1-\beta$。
+                \item 功效的定义是：当备择假设$H_1$为真时，我们能够正确地拒绝原假设$H_0$的概率。即$1-\beta = P(\text{拒绝 } H_0 | H_1 \text{ 为真})$。
+            \end{itemize}
+            
+            \textbf{2. 确定检验的条件}
+            \begin{itemize}
+                \item 拒绝域为$W=\{\bar{X}\ge 0.55\}$。
+                \item 备择假设$H_1$为真，意味着总体的真实均值为$\mu=1$。
+                \item 总体方差$\sigma^2=1$，样本容量$n=9$。
+                \item 根据中心极限定理，样本均值$\bar{X}$的分布为$\bar{X}\sim N(\mu, \frac{\sigma^2}{n})$。
+                \item 当$H_1$为真时，$\mu=1$，所以$\bar{X}\sim N(1, \frac{1}{9})$。
+            \end{itemize}
+            
+            \textbf{3. 计算不犯第二类错误的概率}
+            \begin{itemize}
+                \item 我们需要计算$P(\bar{X}\in W | \mu=1)$，即$P(\bar{X}\ge 0.55 | \mu=1)$。
+                \item 标准化公式为$Z=\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}$。
+                \item 在这里，$\mu=1$, $\sigma=1$, $n=9$，所以标准差为$\frac{\sigma}{\sqrt{n}}=\frac{1}{\sqrt{9}}=\frac{1}{3}$。
+                \item $P(\bar{X}\ge 0.55) = P\left(\frac{\bar{X}-1}{1/3} \ge \frac{0.55-1}{1/3}\right) = P(Z \ge -1.35)$
+                \item 根据标准正态分布的对称性，$P(Z \ge -z) = P(Z \le z)$。
+                \item 所以，$P(Z \ge -1.35) = P(Z \le 1.35) = \Phi(1.35)$。
+            \end{itemize}
+            
+            \textbf{最终答案}：$B$（$\Phi(1.35)$）
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem $z=\arcsin y^x$在点$(-1,2)$处的全微分为$dz=\blankline.$
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 全微分公式}
+            
+            函数$z=f(x,y)$的全微分公式为：$dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy$。我们需要先求出$z$对$x$和$y$的偏导数。
+            
+            \textbf{2. 求偏导数$\frac{\partial z}{\partial x}$}
+            
+            将$y$视为常数，对$x$求导。根据链式法则和基本求导公式$(\arcsin u)'=\frac{1}{\sqrt{1-u^2}}$和$(a^x)'=a^x\ln a$：
+            $$\frac{\partial z}{\partial x} = \frac{1}{\sqrt{1-(y^x)^2}} \cdot \frac{\partial(y^x)}{\partial x} = \frac{y^x\ln y}{\sqrt{1-y^{2x}}}$$
+            
+            \textbf{3. 求偏导数$\frac{\partial z}{\partial y}$}
+            
+            将$x$视为常数，对$y$求导。根据链式法则和基本求导公式$(\arcsin u)'=\frac{1}{\sqrt{1-u^2}}$和$(y^n)'=ny^{n-1}$：
+            $$\frac{\partial z}{\partial y} = \frac{1}{\sqrt{1-(y^x)^2}} \cdot \frac{\partial(y^x)}{\partial y} = \frac{xy^{x-1}}{\sqrt{1-y^{2x}}}$$
+            
+            \textbf{4. 计算在点$(-1,2)$处的偏导数值}
+            
+            将$x=-1, y=2$代入上述偏导数表达式：
+            \begin{itemize}
+                \item $\frac{\partial z}{\partial x}|_{(-1,2)} = \frac{2^{-1}\ln 2}{\sqrt{1-2^{-2}}} = \frac{\frac{1}{2}\ln 2}{\sqrt{1-\frac{1}{4}}} = \frac{\frac{1}{2}\ln 2}{\frac{\sqrt{3}}{2}} = \frac{\ln 2}{\sqrt{3}} = \frac{\sqrt{3}}{3}\ln 2$
+                \item $\frac{\partial z}{\partial y}|_{(-1,2)} = \frac{(-1) \cdot 2^{-2}}{\sqrt{1-\frac{1}{4}}} = \frac{-\frac{1}{4}}{\frac{\sqrt{3}}{2}} = -\frac{1}{2\sqrt{3}} = -\frac{\sqrt{3}}{6}$
+            \end{itemize}
+            
+            \textbf{5. 写出全微分表达式}
+            
+            将计算出的偏导数值代入全微分公式。
+            
+            \textbf{最终答案}：$dz = \frac{\sqrt{3}}{3}\ln 2\, dx - \frac{\sqrt{3}}{6}\, dy$
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设$e^{ax}\ge 1+x$对任意实数$x$均成立，则$a$的取值范围为$\blankline.$
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 构造辅助函数}
+            
+            设函数$f(x) = e^{ax} - 1 - x$。题目条件等价于$f(x)\ge 0$对任意实数$x$恒成立。这意味着函数$f(x)$的全局最小值必须大于或等于$0$。
+            
+            \textbf{2. 求函数的最小值}
+            
+            对$f(x)$求导以寻找极值点：
+            $$f'(x) = ae^{ax} - 1$$
+            
+            令$f'(x)=0$，得到$ae^{ax}=1$，即$e^{ax}=\frac{1}{a}$。
+            \begin{itemize}
+                \item 要使该方程有解，必须有$\frac{1}{a}>0$，即$a>0$。
+                \item 如果$a=0$，不等式为$1\ge 1+x$，化为$x\le 0$，不满足对任意$x$成立。
+                \item 如果$a<0$，则$e^{ax}>0$而$\frac{1}{a}<0$，方程无解。此时$f'(x)=ae^{ax}-1$恒小于0，函数单调递减，不可能恒大于等于0。
+                \item 因此，必须有$a>0$。
+            \end{itemize}
+            
+            \textbf{3. 确定极值点和最小值}
+            
+            当$a>0$时，解$e^{ax}=\frac{1}{a}$得$x_0 = -\frac{\ln a}{a}$是唯一的驻点。
+            
+            求二阶导数判断极值类型：$f''(x) = a^2 e^{ax} > 0$恒成立，所以$x_0$是全局最小点。
+            
+            \textbf{4. 建立关于$a$的不等式}
+            
+            函数$f(x)$的最小值为：
+            $$f(x_0) = e^{-\ln a} - 1 + \frac{\ln a}{a} = \frac{1}{a} - 1 + \frac{\ln a}{a} \ge 0$$
+            
+            化简得：$1 - a + \ln a \ge 0$，即$\ln a \ge a - 1$。
+            
+            \textbf{5. 解关于$a$的不等式}
+            
+            分析函数$g(a) = \ln a - (a-1)$在$a>0$时的性质。
+            $$g'(a) = \frac{1}{a} - 1$$
+            
+            令$g'(a)=0$，解得$a=1$。当$0<a<1$时，$g'(a)>0$；当$a>1$时，$g'(a)<0$。因此$a=1$是最大值点。
+            
+            $g(a)$的最大值为$g(1) = 0$。因为$g(a)$的最大值是$0$，所以$g(a)\ge 0$当且仅当$a=1$。
+            
+            \textbf{最终答案}：$a=1$
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 已知$\Omega=\{(x,y,z)|y^2+z^2\le 1, 0\le x\le 1\}$，$\Sigma$为$\Omega$的边界面且取外侧，则$\oiint_{\Sigma} (y^3+z\sin x)dydz + zdxdy=\blankline.$
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 应用高斯散度定理}
+            
+            该积分是第二类曲面积分，区域$\Omega$是封闭的，曲面$\Sigma$取外侧，满足高斯公式的应用条件。
+            
+            \textbf{2. 确定$P, Q, R$并计算散度}
+            
+            从积分表达式$\oiint_{\Sigma} Pdydz + Qdzdx + Rdxdy$中：
+            \begin{itemize}
+                \item $P = y^3+z\sin x$
+                \item $Q = 0$
+                \item $R = z$
+            \end{itemize}
+            
+            计算散度：
+            $$\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = 0 + 3y^2 + 1 = 3y^2+1$$
+            
+            \textbf{3. 转化为三重积分}
+            
+            由高斯公式：
+            $$\oiint_{\Sigma} Pdydz + Qdzdx + Rdxdy = \iiint_{\Omega} (3y^2+1) dV$$
+            
+            \textbf{4. 计算三重积分}
+            
+            先对$yz$平面上的圆盘$D: y^2+z^2\le 1$积分，再对$x$积分。使用极坐标变换：$y=r\cos\theta, z=r\sin\theta$。
+            
+            $$\iint_{D} (3y^2+1) dydz = \int_0^{2\pi} \int_0^1 (3r^2\cos^2\theta+1) r\, dr\, d\theta$$
+            
+            先对$r$积分：
+            $$\int_0^1 (3r^3\cos^2\theta+r) dr = \frac{3}{4}\cos^2\theta + \frac{1}{2}$$
+            
+            再对$\theta$积分，利用$\cos^2\theta = \frac{1+\cos(2\theta)}{2}$：
+            $$\int_0^{2\pi} \left(\frac{3}{4}\cos^2\theta + \frac{1}{2}\right) d\theta = \frac{7\pi}{4}$$
+            
+            完成对$x$的积分：
+            $$\iiint_{\Omega} (3y^2+1) dV = \int_0^1 \frac{7\pi}{4} dx = \frac{7\pi}{4}$$
+            
+            \textbf{最终答案}：$\frac{7\pi}{4}$
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设随机变量$X\sim B(2, \frac{1}{2})$，则$E(e^{2X})=\blankline.$
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{方法一：利用矩母函数（MGF）}
+            
+            \begin{itemize}
+                \item 随机变量$X$的矩母函数定义为$M_X(t)=E(e^{tX})$。
+                \item 对于服从二项分布$B(n,p)$的随机变量，其矩母函数为$M_X(t)=(1-p+pe^t)^n$。
+                \item 本题中，$n=2, p=\frac{1}{2}$，所以$X$的矩母函数为：
+                    $$M_X(t) = (1-\frac{1}{2}+\frac{1}{2}e^t)^2 = \left(\frac{1+e^t}{2}\right)^2$$
+                \item 题目所求为$E(e^{2X})$，这正好是矩母函数在$t=2$处的值。
+                \item $$E(e^{2X}) = M_X(2) = \left(\frac{1+e^2}{2}\right)^2 = \frac{(1+e^2)^2}{4}$$
+            \end{itemize}
+            
+            \textbf{方法二：利用期望的定义}
+            
+            \begin{itemize}
+                \item $X\sim B(2, \frac{1}{2})$，所以$X$可能的取值为$0, 1, 2$。
+                \item 其概率分布：$P(X=0) = \dfrac{1}{4}$，$P(X=1) = \dfrac{1}{2}$，$P(X=2) = \dfrac{1}{4}$
+                \item 根据期望的定义：
+                    $$E(e^{2X}) = e^{0} \cdot \frac{1}{4} + e^{2} \cdot \frac{1}{2} + e^{4} \cdot \frac{1}{4} = \frac{1+2e^2+e^4}{4}$$
+                \item 分子是完全平方式：$(1+e^2)^2 = 1^2 + 2 \cdot 1 \cdot e^2 + (e^2)^2 = 1+2e^2+e^4$
+                \item 所以，$$E(e^{2X}) = \frac{(1+e^2)^2}{4}$$
+            \end{itemize}
+            
+            \textbf{最终答案}：$\dfrac{(1+e^2)^2}{4}$（或$\dfrac{1+2e^2+e^4}{4}$）
+        \end{solution}
+    \end{bbox}
+
+\end{qitems}
+
+\end{document}

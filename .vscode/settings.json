@@ -1,0 +1,94 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "LuaLaTeX (×2 生成目录)",
+            "tools": [
+                "lualatex",
+                "lualatex"
+            ]
+        },
+        {
+            "name": "LuaLaTeX 显示解答 (×2)",
+            "tools": [
+                "lualatex-with-solutions",
+                "lualatex",
+                "lualatex"
+            ]
+        },
+        {
+            "name": "LuaLaTeX 隐藏解答 (×2)",
+            "tools": [
+                "lualatex-no-solutions",
+                "lualatex",
+                "lualatex"
+            ]
+        },
+        {
+            "name": "生成两个版本 (自动化)",
+            "tools": [
+                "build-both-versions"
+            ]
+        },
+        {
+            "name": "LuaLaTeX + BibTeX (×2)",
+            "tools": [
+                "lualatex",
+                "bibtex",
+                "lualatex",
+                "lualatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatex-with-solutions",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-Command",
+                "@'% Show solutions version\\n\\setSolutionDisplay{\\showSolution}'@ | Out-File -Encoding UTF8 solution_config.tex"
+            ]
+        },
+        {
+            "name": "lualatex-no-solutions",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-Command",
+                "@'% Hide solutions version\\n\\setSolutionDisplay{\\hideSolution}'@ | Out-File -Encoding UTF8 solution_config.tex"
+            ]
+        },
+        {
+            "name": "build-both-versions",
+            "command": "powershell",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "build_both.ps1"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.synctex.afterBuild.enabled": true
+}
+

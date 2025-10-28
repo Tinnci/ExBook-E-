@@ -107,7 +107,6 @@
 
 \usetikzlibrary{fadings}
 \usetikzlibrary{shapes, positioning}
-\punctstyle{quanjiao} % 全角（主要是为了让中文逗号占满一个字符的宽度）
 \ctexset{linestretch = 4, autoindent = 0pt}
 \if@darkmode
     \hypersetup {colorlinks=true,linkcolor=white, urlcolor=white!61.8, citecolor=white!61.8}
