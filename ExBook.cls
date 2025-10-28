@@ -434,6 +434,9 @@
     \else
         \geometry{a4paper, left=18mm, right=18mm, top=25mm, bottom=25mm, headsep=5mm}   
     \fi
+    
+    % Fix fancyhdr headheight warning
+    \setlength{\headheight}{14.5pt}
 
     % 自定义封面样式
     \renewcommand{\maketitle}{
@@ -824,18 +827,19 @@
 
     \newenvironment{bbox}
     {
-        \begingroup
-        \begin{minipage}{\textwidth}
+        % Use a breakable container instead of a minipage so long answers (tcolorbox)
+        % can break across pages. Keep light vertical spacing between questions.
+        \par\medskip\noindent
     }
     {
-        \vspace*{7.5cm}
-        \end{minipage}
+        \par\medskip
+        
+        % optional watermark overlay (keep but do not force page breaks)
         \if@water
             \begin{tikzpicture}[overlay,remember picture]
                 \node[anchor=east, opacity=0.02] at ([xshift=-1.2cm, yshift=4.8cm]current page.south east)  {\includegraphics[width=0.16\textwidth]{\ExBook@value@waterImg}}; 
             \end{tikzpicture}
         \fi
-        \endgroup
     % \newpage % 在环境结束时插入新页面
     }
 
