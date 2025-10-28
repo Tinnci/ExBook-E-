@@ -2,70 +2,114 @@
 
 ---
 
+# 📚 考研数学错题本
+
+> 基于 **ExBook** 错题本模板，个人错题本系统
 
 <div align="center">
-<img src="https://img.shields.io/github/languages/code-size/ExBook/ExBook" alt="code-size" />
-    <img src="https://img.shields.io/badge/Author-ExBook-orange" alt="Author" />
-    </br>
-    <img src="https://img.shields.io/github/languages/top/ExBook/ExBook?color=yellow" alt="languages-top" />
-    <img src="https://img.shields.io/github/last-commit/ExBook/ExBook" alt="last-commit" />
-    <img src="https://img.shields.io/github/languages/count/ExBook/ExBook" alt="languages-count" />
+<img src="https://img.shields.io/badge/Author-shiso-blue" alt="Author" />
+<img src="https://img.shields.io/badge/Language-LaTeX-red" alt="Language" />
+<img src="https://img.shields.io/badge/Engine-LuaTeX-green" alt="Engine" />
+<img src="https://img.shields.io/badge/Status-Active-brightgreen" alt="Status" />
 </div>
 
-<div align="center">
-    <a href="https://exbook.github.io/">官方网站</a>
-</div>
+## 🎯 项目概述
 
-<div align="center">
-<br>微信交流群⬇️（如二维码失效，请添加群主微信`shang_an_001`拉你进群）<br><br>
- <img src="./README.IMAGE/wcqr.png" width="18% alt="wcqr" />
-</div>
+这是一个使用 **LuaTeX** 编译的自动化错题本系统，可以自动生成两个版本的 PDF：
+- 📖 **含解答版本** - 用于复习和学习
+- ❓ **不含解答版本** - 用于自我检测
 
-<!-- toc -->
-- [简介](#简介)
-- [如何使用](#如何使用)
-- [文档类参考](#文档类参考)
-  - [文档类选项](#文档类选项)
-  - [封面设置](#封面设置)
-  - [页眉页脚设置](#页眉页脚设置)
-  - [主题颜色设置](#主题颜色设置)
-  - [题目录入环境及命令](#题目录入环境及命令)
-  - [页面水印设置](#页面水印设置)
-- [完整例子](#完整例子)
-  - [文字录入型刷题本](#文字录入型刷题本)
-  - [截图型刷题本](#截图型刷题本)
-- [其他](#其他)
+### ✨ 核心特性
 
+- **双版本自动生成** - 一个 LaTeX 源文件，编译出两个 PDF
+- **完整目录支持** - 二次编译确保目录准确
+- **VS Code 集成** - 多种编译 recipes 快速切换
+- **PowerShell 自动化** - 一键生成两个版本
+- **LuaTeX 中文支持** - 完美的中文渲染
+- **解答可控** - 通过配置文件轻松切换显示/隐藏解答
 
-# 简介
-**ExBook** 是一个专门制作考研做题本/刷题本的 LaTex 文档类，只录入一次题目，就可以快速生成6种版式的PDF文档（如下图）。
+## 📂 项目结构
 
-<!-- 
-<img src="./README.IMAGE/1.png" width="70%">
-<img src="./README.IMAGE/2.png" width="70%"> -->
-<div align="center">
-    <img src="./README.IMAGE/1.png" width="90%">
-    <img src="./README.IMAGE/2.png" width="90%">
-</div>
+```
+.
+├── zhangyu_8_01.tex                 # 第1套错题本源文件（5道题目）
+├── solution_config.tex              # 解答显示/隐藏切换配置
+├── build_both.ps1                   # PowerShell 自动编译脚本
+├── ExBook.cls                       # ExBook 文档类（已优化）
+├── .latexmkrc                       # Latexmk 配置
+├── .vscode/settings.json            # VS Code LaTeX Workshop 配置
+├── .gitignore                       # Git 忽略规则
+├── zhangyu_8_01_with_solutions.pdf  # 含解答 PDF（8页）
+├── zhangyu_8_01_no_solutions.pdf    # 不含解答 PDF（3页）
+└── README.md                        # 本文件
+```
 
-**功能特点：**
-1. 录入一次题目，就可以生成6种版式（A4紧凑版、A4标准版、A4宽松版、A4单题版、横版Pad版、竖版Pad版）的PDF文档，无需手动修改任何格式；
-2. 支持制作**文字录入型刷题本**以及**截图型刷题本**；
-3. 支持选择题选项自动排版，可根据选项的文字长度自动排列选项；
-4. 极简自定义封面、页眉、页脚等，极简插入图片，无需关注复杂的 LaTex 代码；
-5. 提供12种美观易用的颜色主题，包含4种经典主题以及8种个性主题；
-6. 支持自定义添加水印，包含**行内文字水印**以及**全局页面水印**；
-7. Pad版（横版Pad版、竖版Pad版）下支持深色模式；
-8. 支持成组自定义题目编号和标签样式，并支持组内单个题目编号的重定义；
-9. 支持代码高亮。
+## 🚀 快速开始
 
-# 如何使用
-1. 在 overleaf 上在线使用 ExBook
-2. 在本地使用 ExBook
+### 前置要求
+- **TeX Live 2025** 或更新版本（包含 LuaTeX）
+- **VS Code** + **LaTeX Workshop** 扩展（可选，用于 VS Code 集成）
+- **PowerShell** 5.0+ （用于自动化脚本）
 
-<!-- 具体教程见：[官方网站](https://exbook.github.io/) -->
+### 方法 1：使用 PowerShell 脚本（推荐）
 
-注意：使用此项目需要一点 Latex 基础！
+```powershell
+cd path/to/ExBook-E-
+powershell -ExecutionPolicy Bypass -File build_both.ps1
+```
+
+输出：
+```
+[1/3] Generating version WITH solutions...
+    Compiling (pass 1/2)...
+    Compiling (pass 2/2)...
+    [OK] Generated: zhangyu_8_01_with_solutions.pdf
+
+[2/3] Generating version WITHOUT solutions...
+    Compiling (pass 1/2)...
+    Compiling (pass 2/2)...
+    [OK] Generated: zhangyu_8_01_no_solutions.pdf
+
+[3/3] Cleaning up temporary files...
+    [OK] Cleanup complete
+```
+
+### 方法 2：使用 VS Code
+
+1. 打开项目文件夹
+2. 点击 **"Build LaTeX Project"** 或按 `Ctrl+Alt+B`
+3. 从 recipes 列表中选择：
+   - **LuaLaTeX (×2 生成目录)** - 标准编译（二次）
+   - **LuaLaTeX 显示解答 (×2)** - 显示解答版本
+   - **LuaLaTeX 隐藏解答 (×2)** - 隐藏解答版本
+   - **生成两个版本 (自动化)** - 自动化脚本
+
+### 方法 3：命令行编译
+
+```bash
+# 第一次编译
+lualatex -synctex=1 -interaction=nonstopmode -jobname=zhangyu_8_01_with_solutions zhangyu_8_01.tex
+
+# 第二次编译（生成目录）
+lualatex -synctex=1 -interaction=nonstopmode -jobname=zhangyu_8_01_with_solutions zhangyu_8_01.tex
+```
+
+## 🔧 配置说明
+
+### 切换解答显示/隐藏
+
+编辑 `solution_config.tex`：
+
+```latex
+% 显示解答版本
+\setSolutionDisplay{\showSolution}
+
+% 或隐藏解答版本
+% \setSolutionDisplay{\hideSolution}
+```
+
+然后重新编译即可。
+
 
 # 文档类参考
 
