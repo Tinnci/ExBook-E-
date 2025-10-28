@@ -296,14 +296,14 @@
 \NewEnviron{solution}{%
     \makeatletter
     \if@enableSolution
-        \par\smallskip\noindent
+        \par\vspace{3pt}\noindent
         \if@darkmode
             \begin{tcolorbox}[
                 breakable,
                 enhanced jigsaw,
                 boxrule=0.5pt,
                 arc=2mm,
-                boxsep=4pt,
+                boxsep=2pt,
                 left=2pt,
                 right=2pt,
                 top=2pt,
@@ -314,10 +314,15 @@
                 fonttitle=\bfseries,
                 colbacktitle=themeColor,
                 coltitle=white,
-                before skip=6pt plus 2pt minus 2pt,
-                after skip=6pt plus 2pt minus 2pt,
+                before skip balanced=2pt,
+                after skip balanced=2pt,
                 grow to left by=0mm,
-                grow to right by=0mm
+                grow to right by=0mm,
+                pad at break*=1mm,
+                shrink break goal=30mm,
+                overlay unbroken and first={},
+                overlay middle={},
+                overlay last={}
             ]
             \BODY
             \end{tcolorbox}
@@ -327,7 +332,7 @@
                 enhanced jigsaw,
                 boxrule=0.5pt,
                 arc=2mm,
-                boxsep=4pt,
+                boxsep=2pt,
                 left=2pt,
                 right=2pt,
                 top=2pt,
@@ -338,10 +343,15 @@
                 fonttitle=\bfseries,
                 colbacktitle=themeColor,
                 coltitle=white,
-                before skip=6pt plus 2pt minus 2pt,
-                after skip=6pt plus 2pt minus 2pt,
+                before skip balanced=2pt,
+                after skip balanced=2pt,
                 grow to left by=0mm,
-                grow to right by=0mm
+                grow to right by=0mm,
+                pad at break*=1mm,
+                shrink break goal=30mm,
+                overlay unbroken and first={},
+                overlay middle={},
+                overlay last={}
             ]
             \BODY
             \end{tcolorbox}
@@ -508,6 +518,9 @@
     \else
         \geometry{a4paper, left=18mm, right=18mm, top=25mm, bottom=25mm, headsep=5mm}   
     \fi
+    
+    % Fix fancyhdr headheight warning
+    \setlength{\headheight}{14.5pt}
 
     % 自定义封面样式
     \renewcommand{\maketitle}{
@@ -570,19 +583,19 @@
 
     \newenvironment{bbox}
     {
-    \begin{minipage}{\textwidth}
+    % Use a breakable container instead of a minipage so long answers (tcolorbox)
+    % can break across pages. Keep light vertical spacing between questions.
+    \par\medskip\noindent
     }
     {
+    \par\medskip
 
-    \vspace*{2.5cm}
-    \end{minipage}
-
+    % optional watermark overlay (keep but do not force page breaks)
     \if@water
         \begin{tikzpicture}[overlay,remember picture]
             \node[anchor=east, opacity=0.02] at ([xshift=-1.2cm, yshift=4.8cm]current page.south east)  {\includegraphics[width=0.16\textwidth]{\ExBook@value@waterImg}}; 
         \end{tikzpicture}
     \fi
-    % \newpage % 在环境结束时插入新页面
     }
 \or
  %                         *****************

@@ -30,6 +30,7 @@ Start-Sleep -Milliseconds 1000
 
 if (Test-Path zhangyu_8_01_with_solutions.pdf) {
     Write-Host "    [OK] Generated: zhangyu_8_01_with_solutions.pdf" -ForegroundColor Green
+    Write-Host "    [LOG] Log file: zhangyu_8_01_with_solutions.log" -ForegroundColor Gray
 } else {
     Write-Host "    [ERROR] Could not generate PDF" -ForegroundColor Red
 }
@@ -59,22 +60,21 @@ Start-Sleep -Milliseconds 1000
 
 if (Test-Path zhangyu_8_01_no_solutions.pdf) {
     Write-Host "    [OK] Generated: zhangyu_8_01_no_solutions.pdf" -ForegroundColor Green
+    Write-Host "    [LOG] Log file: zhangyu_8_01_no_solutions.log" -ForegroundColor Gray
 } else {
     Write-Host "    [ERROR] Could not generate PDF" -ForegroundColor Red
 }
 
-# Cleanup temporary files
+# Cleanup temporary files (keep .log files for debugging)
 Write-Host ""
 Write-Host "[3/3] Cleaning up temporary files..." -ForegroundColor Cyan
 $tempPatterns = @(
     "zhangyu_8_01_with_solutions.aux",
-    "zhangyu_8_01_with_solutions.log",
     "zhangyu_8_01_with_solutions.out",
     "zhangyu_8_01_with_solutions.toc",
     "zhangyu_8_01_with_solutions.fdb_latexmk",
     "zhangyu_8_01_with_solutions.fls",
     "zhangyu_8_01_no_solutions.aux",
-    "zhangyu_8_01_no_solutions.log",
     "zhangyu_8_01_no_solutions.out",
     "zhangyu_8_01_no_solutions.toc",
     "zhangyu_8_01_no_solutions.fdb_latexmk",
@@ -84,7 +84,7 @@ $tempPatterns = @(
 foreach ($pattern in $tempPatterns) {
     Remove-Item -Path $pattern -Force -ErrorAction SilentlyContinue
 }
-Write-Host "    [OK] Cleanup complete" -ForegroundColor Green
+Write-Host "    [OK] Cleanup complete (log files preserved)" -ForegroundColor Green
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
@@ -93,4 +93,8 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "[+] Successfully generated both versions:" -ForegroundColor Green
 Write-Host "    1. zhangyu_8_01_with_solutions.pdf" -ForegroundColor Yellow
 Write-Host "    2. zhangyu_8_01_no_solutions.pdf" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "[+] Log files for debugging:" -ForegroundColor Cyan
+Write-Host "    1. zhangyu_8_01_with_solutions.log" -ForegroundColor Gray
+Write-Host "    2. zhangyu_8_01_no_solutions.log" -ForegroundColor Gray
 Write-Host "========================================" -ForegroundColor Cyan
