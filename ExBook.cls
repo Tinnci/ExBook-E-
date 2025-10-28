@@ -296,38 +296,52 @@
 \NewEnviron{solution}{%
     \makeatletter
     \if@enableSolution
-        \par\medskip\noindent
+        \par\smallskip\noindent
         \if@darkmode
             \begin{tcolorbox}[
                 breakable,
+                enhanced jigsaw,
                 boxrule=0.5pt,
                 arc=2mm,
                 boxsep=4pt,
                 left=2pt,
                 right=2pt,
+                top=2pt,
+                bottom=2pt,
                 colback=bg!60!black,
                 colframe=themeColor,
                 title={\heiti\bfseries 解答},
                 fonttitle=\bfseries,
                 colbacktitle=themeColor,
-                coltitle=white
+                coltitle=white,
+                before skip=6pt plus 2pt minus 2pt,
+                after skip=6pt plus 2pt minus 2pt,
+                grow to left by=0mm,
+                grow to right by=0mm
             ]
             \BODY
             \end{tcolorbox}
         \else
             \begin{tcolorbox}[
                 breakable,
+                enhanced jigsaw,
                 boxrule=0.5pt,
                 arc=2mm,
                 boxsep=4pt,
                 left=2pt,
                 right=2pt,
+                top=2pt,
+                bottom=2pt,
                 colback=themeColor!5!white,
                 colframe=themeColor,
                 title={\heiti\bfseries 解答},
                 fonttitle=\bfseries,
                 colbacktitle=themeColor,
-                coltitle=white
+                coltitle=white,
+                before skip=6pt plus 2pt minus 2pt,
+                after skip=6pt plus 2pt minus 2pt,
+                grow to left by=0mm,
+                grow to right by=0mm
             ]
             \BODY
             \end{tcolorbox}
