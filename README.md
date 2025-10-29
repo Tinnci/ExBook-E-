@@ -32,7 +32,7 @@
 
 ```
 .
-├── zhangyu_8_01.tex                 # 第1套错题本源文件（5道题目）
+├── zhangyu_8_01.tex                 # 第1套错题本源文件
 ├── solution_config.tex              # 解答显示/隐藏切换配置
 ├── build_both.ps1                   # PowerShell 自动编译脚本
 ├── ExBook.cls                       # ExBook 文档类（已优化）

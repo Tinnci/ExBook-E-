@@ -619,6 +619,108 @@
         \end{solution}
     \end{bbox}
 
+    \begin{bbox}
+        \qitem 设矩阵$A = \begin{pmatrix} -1 & 0 & 1 \\ 1 & 2 & 0 \\ a & 0 & 3 \end{pmatrix}$与$B = \begin{pmatrix} 1 & b & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}$相似，且方程$Ax = x + (b, -b, 2b)^T$的一个解为$(0, -1, 1)^T$。
+        
+        (1) 求$a, b$的值；(2) 求$A^{100}$。
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{（1）求$a, b$的值}
+            
+            \textbf{利用相似矩阵性质求$a$}
+            
+            相似矩阵的行列式相同，因此$\det(A) = \det(B)$。
+            
+            计算$\det(B)$（上三角矩阵）：
+            $$\det(B) = 1 \cdot 1 \cdot 2 = 2$$
+            
+            计算$\det(A)$，按第二列展开：
+            $$\det(A) = 2 \cdot (-1)^{2+2} \begin{vmatrix} -1 & 1 \\ a & 3 \end{vmatrix} = 2(-3 - a) = -6 - 2a$$
+            
+            由$\det(A) = \det(B)$：
+            $$-6 - 2a = 2 \implies a = -4$$
+            
+            \textbf{利用方程条件求$b$}
+            
+            原方程：$Ax = x + (b, -b, 2b)^T$，整理得：
+            $$(A - I)x = \begin{pmatrix} b \\ -b \\ 2b \end{pmatrix}$$
+            
+            将$x = (0, -1, 1)^T$和$a = -4$代入。计算：
+            $$A - I = \begin{pmatrix} -2 & 0 & 1 \\ 1 & 1 & 0 \\ -4 & 0 & 2 \end{pmatrix}$$
+            
+            $$\begin{pmatrix} -2 & 0 & 1 \\ 1 & 1 & 0 \\ -4 & 0 & 2 \end{pmatrix} \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix}$$
+            
+            比较两边：$\begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} = \begin{pmatrix} b \\ -b \\ 2b \end{pmatrix}$
+            
+            因此$\boxed{a = -4, \quad b = 1}$
+            
+            \textbf{（2）求$A^{100}$}
+            
+            \textbf{第一步：求特征值}
+            
+            特征方程$\det(\lambda I - A) = 0$：
+            $$\det(\lambda I - A) = \begin{vmatrix} \lambda+1 & 0 & -1 \\ -1 & \lambda-2 & 0 \\ 4 & 0 & \lambda-3 \end{vmatrix}$$
+            
+            按第二列展开：
+            $$= (\lambda-2) \begin{vmatrix} \lambda+1 & -1 \\ 4 & \lambda-3 \end{vmatrix}$$
+            
+            $$= (\lambda-2)[(\lambda+1)(\lambda-3) + 4]$$
+            
+            $$= (\lambda-2)(\lambda^2 - 2\lambda + 1) = (\lambda-2)(\lambda-1)^2$$
+            
+            特征值：$\lambda_1 = 2$（代数重数1），$\lambda_2 = 1$（代数重数2）
+            
+            \textbf{第二步：求特征向量}
+            
+            对$\lambda_1 = 2$，解$(A-2I)x = 0$：
+            $$\begin{pmatrix} -3 & 0 & 1 \\ 1 & 0 & 0 \\ -4 & 0 & 1 \end{pmatrix} \implies \vec{v}_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$$
+            
+            对$\lambda_2 = 1$，解$(A-I)x = 0$：
+            $$\begin{pmatrix} -2 & 0 & 1 \\ 1 & 1 & 0 \\ -4 & 0 & 2 \end{pmatrix} \implies \vec{v}_2 = \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix}$$
+            
+            \textbf{第三步：求广义特征向量（约当链）}
+            
+            因为$\lambda=1$的几何重数为1小于代数重数2，故$A$不可对角化，需用约当标准型。
+            
+            求广义特征向量$\vec{v}_3$满足$(A-I)\vec{v}_3 = \vec{v}_2$：
+            $$\begin{pmatrix} -2 & 0 & 1 \\ 1 & 1 & 0 \\ -4 & 0 & 2 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix}$$
+            
+            取$x_1 = 0$，得$\vec{v}_3 = \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix}$
+            
+            \textbf{第四步：构造相似变换}
+            
+            $$P = \begin{pmatrix} 0 & 1 & 0 \\ 1 & -1 & -1 \\ 0 & 2 & 1 \end{pmatrix}, \quad J = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{pmatrix}$$
+            
+            约当标准型中，$\lambda=1$对应的$2 \times 2$约当块：$\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$
+            
+            \textbf{第五步：计算$J^{100}$}
+            
+            $$J^{100} = \begin{pmatrix} 2^{100} & 0 & 0 \\ 0 & 1 & 100 \\ 0 & 0 & 1 \end{pmatrix}$$
+            
+            （注：约当块$\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}^{100} = \begin{pmatrix} 1 & 100 \\ 0 & 1 \end{pmatrix}$）
+            
+            \textbf{第六步：求$P^{-1}$}
+            
+            $$P^{-1} = \begin{pmatrix} -1 & 1 & 1 \\ 1 & 0 & 0 \\ -2 & 0 & 1 \end{pmatrix}$$
+            
+            \textbf{第七步：计算$A^{100} = PJ^{100}P^{-1}$}
+            
+            $$PJ^{100} = \begin{pmatrix} 0 & 1 & 0 \\ 1 & -1 & -1 \\ 0 & 2 & 1 \end{pmatrix}\begin{pmatrix} 2^{100} & 0 & 0 \\ 0 & 1 & 100 \\ 0 & 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 & 100 \\ 2^{100} & -1 & -101 \\ 0 & 2 & 201 \end{pmatrix}$$
+            
+            $$A^{100} = \begin{pmatrix} 0 & 1 & 100 \\ 2^{100} & -1 & -101 \\ 0 & 2 & 201 \end{pmatrix}\begin{pmatrix} -1 & 1 & 1 \\ 1 & 0 & 0 \\ -2 & 0 & 1 \end{pmatrix}$$
+            
+            $$= \boxed{\begin{pmatrix} -199 & 0 & 100 \\ 201-2^{100} & 2^{100} & 2^{100}-101 \\ -400 & 0 & 201 \end{pmatrix}}$$
+            
+            \textbf{关键要点}：
+            \begin{itemize}
+                \item 相似矩阵的行列式相同是求$a$的关键
+                \item 矩阵不可对角化时，必须使用约当标准型
+                \item 约当块$J_2(1)$的幂：$\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}$
+            \end{itemize}
+        \end{solution}
+    \end{bbox}
+
 \end{qitems}
 
 \end{document}
