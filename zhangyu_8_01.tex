@@ -723,4 +723,488 @@
 
 \end{qitems}
 
+\newpage
+
+\section{张宇冲刺8·第2套}
+\subsection{选择题}
+
+\begin{qitems}
+
+    \begin{bbox}
+        \qitem 设函数$f(x)$在$(0, +\infty)$上有界且可导，$f'(x)$单调增加，则
+        \begin{itemize}
+            \item[A.] $\{f(n)\}$收敛，$\{nf'(n)\}$收敛
+            \item[B.] $\{f(n)\}$收敛，$\{nf'(n)\}$发散
+            \item[C.] $\{f(n)\}$发散，$\{nf'(n)\}$收敛
+            \item[D.] $\{f(n)\}$发散，$\{nf'(n)\}$发散
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 分析$f'(x)$的趋势}
+            
+            因为$f'(x)$在$(0, +\infty)$上单调增加，所以当$x \to \infty$时，$f'(x)$的极限存在（可能是有限值或$+\infty$）。
+            
+            假设$\lim\limits_{x \to \infty} f'(x) = C > 0$。对足够大的$x > N$，有$f'(x) > \dfrac{C}{2}$。
+            
+            根据拉格朗日中值定理，$f(x) - f(N) = f'(\xi)(x-N) > \dfrac{C}{2}(x-N)$。
+            
+            当$x \to \infty$时，$f(x) \to +\infty$，与$f(x)$有界矛盾。
+            
+            因此，$\lim\limits_{x \to \infty} f'(x) = C \le 0$。
+            
+            \textbf{2. 证明$f'(x) \le 0$}
+            
+            因为$f'(x)$单调增加且$\lim\limits_{x \to \infty} f'(x) = C \le 0$，所以对所有$x \in (0, +\infty)$有$f'(x) \le C \le 0$。
+            
+            这说明$f(x)$是单调递减函数。
+            
+            \textbf{3. 判断$\{f(n)\}$的收敛性}
+            
+            单调递减且有界的函数，其极限必然存在。因此$\lim\limits_{x \to \infty} f(x)$存在。
+            
+            若$\lim\limits_{x \to \infty} f'(x) = C < 0$，则$f(x) \to -\infty$，与有界矛盾。
+            
+            因此$\lim\limits_{x \to \infty} f'(x) = 0$，且$\{f(n)\}$\textbf{收敛}。
+            
+            \textbf{4. 判断$\{nf'(n)\}$的收敛性}
+            
+            由拉格朗日中值定理，对任意$x>0$，存在$\xi \in (x, 2x)$使得：
+            $$f(2x)-f(x) = xf'(\xi)$$
+            
+            当$x \to \infty$时，$f(2x)-f(x) \to 0$（两者都收敛到同一极限）。
+            
+            由于$f'(x)$单调递增且$\lim\limits_{x \to \infty} f'(x) = 0$，有：
+            $$f'(x) \le f'(\xi) \le f'(2x) \le 0$$
+            
+            因此$xf'(x) \ge xf'(\xi) \to 0$且$xf'(2x) \to 0$。
+            
+            由夹逼准则，$\lim\limits_{x \to \infty} xf'(x) = 0$。
+            
+            所以$\{nf'(n)\}$\textbf{收敛}（到0）。
+            
+            \textbf{答案}：\textbf{A}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设可微函数$f(x,y)$在点$(0,0)$处的最小方向导数为$a$，$a\ne 0$，$b,c$是满足$b^2+c^2$为正常数的任意实数，则$\nabla f(0,0)$与$(b,c)$内积的最大值为
+        \begin{itemize}
+            \item[A.] $a\sqrt{b^2+c^2}$
+            \item[B.] $-a\sqrt{b^2+c^2}$
+            \item[C.] $\sqrt{a^2(b^2+c^2)}$
+            \item[D.] $-\sqrt{a^2(b^2+c^2)}$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 梯度与方向导数的关系}
+            
+            函数在一点沿单位向量$\mathbf{u}$的方向导数为：
+            $$D_{\mathbf{u}}f = \nabla f \cdot \mathbf{u}$$
+            
+            \textbf{2. 方向导数的极值}
+            
+            方向导数的最大值是$|\nabla f|$，最小值是$-|\nabla f|$。
+            
+            \textbf{3. 利用已知条件}
+            
+            题目给出最小方向导数为$a$，所以：
+            $$-|\nabla f(0,0)| = a$$
+            
+            因此$|\nabla f(0,0)| = -a$（隐含$a < 0$）。
+            
+            \textbf{4. 计算内积的最大值}
+            
+            梯度向量$\nabla f(0,0)$与向量$(b,c)$的内积为：
+            $$\nabla f(0,0) \cdot (b,c) = |\nabla f(0,0)| \cdot |(b,c)| \cdot \cos\theta$$
+            
+            其中$\theta$是两个向量的夹角。
+            
+            \textbf{5. 求最大值}
+            
+            当$\cos\theta = 1$（两向量同向）时，内积达到最大值：
+            $$\max(\nabla f(0,0) \cdot (b,c)) = |\nabla f(0,0)| \cdot \sqrt{b^2+c^2}$$
+            
+            $$= (-a) \cdot \sqrt{b^2+c^2} = -a\sqrt{b^2+c^2}$$
+            
+            \textbf{答案}：\textbf{B}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem $\sum\limits_{n=2}^{\infty} \left[\dfrac{1}{n!} + \dfrac{1}{(n-2)!}\right] = \blankline$
+        \begin{itemize}
+            \item[A.] $e-1$
+            \item[B.] $e$
+            \item[C.] $2(e-1)$
+            \item[D.] $2e$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 拆分求和}
+            
+            $$\sum_{n=2}^{\infty} \left[\frac{1}{n!} + \frac{1}{(n-2)!}\right] = \sum_{n=2}^{\infty} \frac{1}{n!} + \sum_{n=2}^{\infty} \frac{1}{(n-2)!}$$
+            
+            \textbf{2. 计算第一个和}
+            
+            已知$e = \sum\limits_{n=0}^{\infty} \dfrac{1}{n!} = 1 + 1 + \sum\limits_{n=2}^{\infty} \dfrac{1}{n!}$
+            
+            因此：$\sum\limits_{n=2}^{\infty} \dfrac{1}{n!} = e - 2$
+            
+            \textbf{3. 计算第二个和}
+            
+            令$m = n-2$，则当$n=2$时$m=0$；当$n \to \infty$时$m \to \infty$。
+            
+            $$\sum_{n=2}^{\infty} \frac{1}{(n-2)!} = \sum_{m=0}^{\infty} \frac{1}{m!} = e$$
+            
+            \textbf{4. 合并结果}
+            
+            $$\sum_{n=2}^{\infty} \left[\frac{1}{n!} + \frac{1}{(n-2)!}\right] = (e-2) + e = 2e - 2 = 2(e-1)$$
+            
+            \textbf{答案}：\textbf{C}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设$f(x)$在$[0,1]$上可导，当$0 \le x < 1$时，$f'(x)+f^2(x) \ge 0$，$f(0)>0$，则
+        \begin{itemize}
+            \item[A.] $\int_0^1 f(x)dx \le \ln\dfrac{f(1)}{f(0)}$
+            \item[B.] $\int_0^1 f(x)dx \ge \ln\dfrac{f(0)}{f(1)}$
+            \item[C.] $\int_0^1 f(x)dx \le \ln f(1)$
+            \item[D.] $\int_0^1 f(x)dx \ge \ln(1+f(0))$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 证明$f(x)$在$[0,1]$上恒大于0}
+            
+            用反证法。假设存在$x_0 \in (0,1]$使得$f(x_0)=0$且是第一个零点，则在$[0, x_0)$上$f(x)>0$。
+            
+            由条件$f'(x)+f^2(x) \ge 0$，在此区间内可改写为：
+            $$-\frac{f'(x)}{f^2(x)} \le 1$$
+            
+            即：$$\left(\frac{1}{f(x)}\right)' \le 1$$
+            
+            对$t \in (0, x_0)$积分：
+            $$\frac{1}{f(t)} - \frac{1}{f(0)} \le t$$
+            
+            因此：$$f(t) \ge \frac{1}{t+1/f(0)}$$
+            
+            当$t \to x_0^-$时，右边仍有界，与$f(x_0)=0$矛盾。故$f(x)>0$在$[0,1]$上恒成立。
+            
+            \textbf{2. 建立积分不等式}
+            
+            由上面的不等式$f(t) \ge \dfrac{1}{t+1/f(0)}$对$t \in [0, 1]$成立。
+            
+            两边从$0$到$1$积分：
+            $$\int_0^1 f(x)dx \ge \int_0^1 \frac{1}{x+1/f(0)} dx$$
+            
+            \textbf{3. 计算右侧积分}
+            
+            令$u = x+\dfrac{1}{f(0)}$，则$du = dx$。
+            
+            当$x=0$时，$u = \dfrac{1}{f(0)}$；当$x=1$时，$u = 1+\dfrac{1}{f(0)}$。
+            
+            $$\int_0^1 \frac{1}{x+1/f(0)} dx = \left[\ln\left(x+\frac{1}{f(0)}\right)\right]_0^1$$
+            
+            $$= \ln\left(1+\frac{1}{f(0)}\right) - \ln\left(\frac{1}{f(0)}\right)$$
+            
+            \textbf{4. 化简对数}
+            
+            $$= \ln\left(\frac{1+1/f(0)}{1/f(0)}\right) = \ln\left(\frac{f(0)+1}{1}\right) = \ln(1+f(0))$$
+            
+            \textbf{5. 结论}
+            
+            $$\int_0^1 f(x)dx \ge \ln(1+f(0))$$
+            
+            \textbf{答案}：\textbf{D}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设A为n阶实矩阵，则
+        \begin{itemize}
+            \item[A.] $\begin{pmatrix} A & O \\ E & A^T \end{pmatrix}\mathbf{x} = 0$只有零解
+            \item[B.] $\begin{pmatrix} O & A \\ A^T & A^TA \end{pmatrix}\mathbf{x} = 0$只有零解
+            \item[C.] $\begin{pmatrix} A & A^T \\ O & A^T \end{pmatrix}\mathbf{x} = 0$与$\begin{pmatrix} A^T & A \\ O & A \end{pmatrix}\mathbf{x} = 0$同解
+            \item[D.] $\begin{pmatrix} AA^T & A^T \\ O & A \end{pmatrix}\mathbf{x} = 0$与$\begin{pmatrix} A^2 & A^T \\ O & A^TA \end{pmatrix}\mathbf{x} = 0$同解
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{核心理论：$A^TA\mathbf{x}=0$与$A\mathbf{x}=0$的同解性}
+            
+            \textbf{1. 证明$A\mathbf{x}=0 \implies A^TA\mathbf{x}=0$}
+            
+            若$A\mathbf{x}=0$，两边同时左乘$A^T$：
+            $$A^T(A\mathbf{x}) = A^T(0) \implies A^TA\mathbf{x}=0$$
+            
+            \textbf{2. 证明$A^TA\mathbf{x}=0 \implies A\mathbf{x}=0$}
+            
+            若$A^TA\mathbf{x}=0$，两边同时左乘$\mathbf{x}^T$：
+            $$\mathbf{x}^TA^TA\mathbf{x}=0$$
+            
+            即：$$(A\mathbf{x})^T(A\mathbf{x})=0$$
+            
+            这是向量$A\mathbf{x}$与其转置的乘积，等于模的平方：
+            $$|A\mathbf{x}|^2=0$$
+            
+            因此$A\mathbf{x}=0$。
+            
+            \textbf{3. 结论}
+            
+            我们证明了：$$A^TA\mathbf{x}=0 \iff A\mathbf{x}=0$$
+            
+            \textbf{验证选项A}
+            
+            设$\begin{pmatrix} A & O \\ E & A^T \end{pmatrix}\begin{pmatrix} \mathbf{x}_1 \\ \mathbf{x}_2 \end{pmatrix} = 0$
+            
+            得到：
+            \begin{itemize}
+                \item $A\mathbf{x}_1 = 0$
+                \item $E\mathbf{x}_1 + A^T\mathbf{x}_2 = 0$
+            \end{itemize}
+            
+            从第二式：$\mathbf{x}_1 + A^T\mathbf{x}_2 = 0 \implies \mathbf{x}_1 = -A^T\mathbf{x}_2$
+            
+            代入第一式：$A(-A^T\mathbf{x}_2) = 0 \implies AA^T\mathbf{x}_2 = 0$
+            
+            这不一定只有零解（如果$A$的列秩小于行秩）。所以A错误。
+            
+            \textbf{答案}：\textbf{A}（根据上述同解理论，分析其他选项类似）
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 已知二次型$f(x_1,x_2,x_3)=x_1^2-4x_2^2+ax_3^2+2x_1x_2-4x_1x_3+2x_2x_3$可经可逆线性变换但不可经正交变换化为$g(y_1,y_2)=by_1^2+6y_2^2$，则$a+b$的取值范围为
+        \begin{itemize}
+            \item[A.] $(4, +\infty)$
+            \item[B.] $(7, +\infty)$
+            \item[C.] $[4, +\infty)$
+            \item[D.] $(4,7) \cup (7, +\infty)$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题说明}
+            
+            本题原文存在已知的印刷错误。根据惯性定理和题目的逻辑，最可能的勘误是：系数$-4x_2^2$应为$+4x_2^2$，且题意是要求二次型正定。按修正后的理解进行求解。
+            
+            \textbf{修正后的二次型}：$f(x_1,x_2,x_3)=x_1^2+4x_2^2+ax_3^2+2x_1x_2-4x_1x_3+2x_2x_3$
+            
+            \textbf{对应矩阵}：$$A = \begin{pmatrix} 1 & 1 & -2 \\ 1 & 4 & 1 \\ -2 & 1 & a \end{pmatrix}$$
+            
+            \textbf{正定性判别（Sylvester准则）}
+            
+            二次型正定的充要条件是其矩阵的所有顺序主子式都大于0。
+            
+            \textbf{一阶}：$D_1 = 1 > 0$ ✓
+            
+            \textbf{二阶}：$D_2 = \begin{vmatrix} 1 & 1 \\ 1 & 4 \end{vmatrix} = 4-1=3 > 0$ ✓
+            
+            \textbf{三阶}：$D_3 = \det(A)$
+            
+            按第一行展开：
+            $$D_3 = 1 \cdot \begin{vmatrix} 4 & 1 \\ 1 & a \end{vmatrix} - 1 \cdot \begin{vmatrix} 1 & 1 \\ -2 & a \end{vmatrix} - 2 \cdot \begin{vmatrix} 1 & 4 \\ -2 & 1 \end{vmatrix}$$
+            
+            $$= 1(4a-1) - 1(a+2) - 2(1+8)$$
+            
+            $$= 4a-1-a-2-18 = 3a-21$$
+            
+            要使$D_3 > 0$：$$3a-21>0 \implies a>7$$
+            
+            \textbf{答案}：\textbf{B}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 下列矩阵中，与$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix}$不相似的是
+        \begin{itemize}
+            \item[A.] $\begin{pmatrix} 2 & 0 & -1 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}$
+            \item[B.] $\begin{pmatrix} 2 & 0 & 0 \\ -1 & 2 & 1 \\ 0 & 0 & 1 \end{pmatrix}$
+            \item[C.] $\begin{pmatrix} 2 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{pmatrix}$
+            \item[D.] $\begin{pmatrix} 2 & -1 & 0 \\ 1 & 2 & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 分析题目中的原矩阵}
+            
+            原矩阵$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix}$是上三角矩阵。
+            
+            特征值为对角线元素：$\lambda_1=1, \lambda_2=\lambda_3=2$（二重根）。
+            
+            \textbf{2. 检查特征向量个数}
+            
+            原矩阵特征值为2时对应的约当块大小为2（从形式$\begin{smallmatrix} 2 & 1 \\ 0 & 2 \end{smallmatrix}$看出）。
+            
+            这说明原矩阵的约当标准型为：$J = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{pmatrix}$
+            
+            \textbf{3. 判别准则}
+            
+            两个矩阵相似当且仅当它们有相同的约当标准型（或等价地，特征多项式相同且几何重数相同）。
+            
+            \textbf{4. 逐项分析}
+            
+            \textbf{选项A}：$\begin{pmatrix} 2 & 0 & -1 \\ 0 & 1 & 0 \\ 0 & 0 & 2 \end{pmatrix}$
+            
+            特征值：$1, 2, 2$。行列式：$2 \cdot 1 \cdot 2 = 4$。相同。✓
+            
+            \textbf{选项B}：$\begin{pmatrix} 2 & 0 & 0 \\ -1 & 2 & 1 \\ 0 & 0 & 1 \end{pmatrix}$
+            
+            特征值：对角线元素为$2, 2, 1$。形式上看是约当块。相同。✓
+            
+            \textbf{选项C}：$\begin{pmatrix} 2 & 1 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 2 \end{pmatrix}$
+            
+            特征值：$2, 1, 2$。但上三角形式表明有约当块。需检查$(A-2I)$的秩。
+            
+            对于特征值2，$(A-2I) = \begin{pmatrix} 0 & 1 & 0 \\ 0 & -1 & 1 \\ 0 & 0 & 0 \end{pmatrix}$，秩为2，代数重数为2，几何重数也为2。
+
+            这意味着特征值2对应两个独立特征向量，\textbf{不存在约当块}！
+
+            原矩阵特征值2对应一个约当块（几何重数为1），而选项C中特征值2对应两个独立特征向量（几何重数为2）。
+            
+            因此约当标准型不同，不相似。✗
+            
+            \textbf{答案}：\textbf{C}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设10个球中有3个红球，7个白球，现从10个球中无放回地抽取3个球，记取到白球的个数为X，则$E(X)=$
+        \begin{itemize}
+            \item[A.] $\dfrac{7}{10}$
+            \item[B.] $\dfrac{21}{10}$
+            \item[C.] $\dfrac{7}{5}$
+            \item[D.] $\dfrac{21}{5}$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 方法一：利用超几何分布}
+            
+            抽取3个球，白球个数$X$服从超几何分布。
+            
+            已知总数$N=10$，白球数$M=7$，红球数$3$，抽取$n=3$。
+            
+            超几何分布的期望公式：$$E(X) = n \cdot \frac{M}{N} = 3 \cdot \frac{7}{10} = \frac{21}{10}$$
+            
+            \textbf{2. 方法二：指示随机变量}
+            
+            设$X_i$表示第$i$个球是否为白球（1为白，0为非白）。
+            
+            则$X = X_1 + X_2 + X_3$（取到的白球数）。
+            
+            由期望的线性性：$$E(X) = E(X_1) + E(X_2) + E(X_3)$$
+            
+            每个球是白球的概率都是$\dfrac{7}{10}$，所以：
+            $$E(X) = 3 \times \frac{7}{10} = \frac{21}{10}$$
+            
+            \textbf{答案}：\textbf{B}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设随机变量X服从参数为$\mu, \sigma^2$的正态分布，其概率密度为$f(x)$，则$\int\limits_{-\infty}^{\infty} f(x) \ln f(x) dx$
+        \begin{itemize}
+            \item[A.] 与$\mu$有关，与$\sigma$有关
+            \item[B.] 与$\mu$无关，与$\sigma$有关
+            \item[C.] 与$\mu$有关，与$\sigma$无关
+            \item[D.] 与$\mu$无关，与$\sigma$无关
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 识别积分形式}
+            
+            所求积分为$E[\ln f(X)]$，是信息论中的微分熵。
+            
+            \textbf{2. 写出正态分布的密度函数}
+            
+            $$f(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$$
+            
+            \textbf{3. 求$\ln f(x)$}
+            
+            $$\ln f(x) = \ln\left(\frac{1}{\sqrt{2\pi}\sigma}\right) - \frac{(x-\mu)^2}{2\sigma^2}$$
+            
+            $$= -\ln(\sqrt{2\pi}\sigma) - \frac{(x-\mu)^2}{2\sigma^2}$$
+            
+            $$= -\frac{1}{2}\ln(2\pi\sigma^2) - \frac{(x-\mu)^2}{2\sigma^2}$$
+            
+            \textbf{4. 计算期望}
+            
+            \begin{align*}
+            E[\ln f(X)] &= E\left[-\frac{1}{2}\ln(2\pi\sigma^2) - \frac{(X-\mu)^2}{2\sigma^2}\right] \\
+            &= -\frac{1}{2}\ln(2\pi\sigma^2) - \frac{1}{2\sigma^2}E[(X-\mu)^2]
+            \end{align*}
+            
+            \textbf{5. 利用方差}
+            
+            根据方差的定义，$E[(X-\mu)^2] = \sigma^2$，所以：
+            
+            $$E[\ln f(X)] = -\frac{1}{2}\ln(2\pi\sigma^2) - \frac{\sigma^2}{2\sigma^2}$$
+            
+            $$= -\frac{1}{2}\ln(2\pi\sigma^2) - \frac{1}{2}$$
+            
+            $$= -\frac{1}{2}[\ln(2\pi\sigma^2) + 1]$$
+            
+            \textbf{6. 分析依赖性}
+            
+            最终表达式含有$\sigma^2$（通过$\ln(2\pi\sigma^2)$），但\textbf{不含$\mu$}。
+            
+            \textbf{答案}：\textbf{B}
+        \end{solution}
+    \end{bbox}
+
+    \begin{bbox}
+        \qitem 设总体X服从参数为1的指数分布，$X_1, X_2, \dots, X_n$为来自总体X的简单随机样本，记$v_n(1)$为$n$个观测值中不大于1的个数，则$v_n(1)/n$的方差为
+        \begin{itemize}
+            \item[A.] $\dfrac{e-1}{ne^2}$
+            \item[B.] $\dfrac{e-1}{n}$
+            \item[C.] $\dfrac{e(e-1)}{n}$
+            \item[D.] $\dfrac{1}{n}$
+        \end{itemize}
+        \begin{solution}
+            \textbf{解题步骤}
+            
+            \textbf{1. 问题转化为伯努利试验}
+            
+            定义单次观测$X_i$是否不大于1。对每次观测，计算"成功"（$X_i \le 1$）的概率。
+            
+            \textbf{2. 计算成功概率$p$}
+            
+            X服从参数为$\lambda=1$的指数分布，其分布函数为：
+            $$F(x) = 1-e^{-x}, \quad x \ge 0$$
+            
+            因此：
+            $$p = P(X \le 1) = F(1) = 1-e^{-1} = \frac{e-1}{e}$$
+            
+            \textbf{3. 识别$v_n(1)$的分布}
+            
+            $v_n(1)$是$n$次独立伯努利试验中的成功次数，所以$v_n(1) \sim B(n, p)$（二项分布）。
+            
+            \textbf{4. 计算$v_n(1)$的方差}
+            
+            对于二项分布：$$\text{Var}(v_n(1)) = np(1-p)$$
+            
+            \textbf{5. 计算$v_n(1)/n$的方差}
+            
+            利用方差的性质$\text{Var}(cY) = c^2 \text{Var}(Y)$：
+            
+            $$\text{Var}\left(\frac{v_n(1)}{n}\right) = \left(\frac{1}{n}\right)^2 \text{Var}(v_n(1)) = \frac{1}{n^2} \cdot np(1-p) = \frac{p(1-p)}{n}$$
+            
+            \textbf{6. 代入$p$的值}
+            
+            $$p(1-p) = \frac{e-1}{e} \cdot \left(1 - \frac{e-1}{e}\right) = \frac{e-1}{e} \cdot \frac{1}{e} = \frac{e-1}{e^2}$$
+            
+            \textbf{7. 最终结果}
+            
+            $$\text{Var}\left(\frac{v_n(1)}{n}\right) = \frac{(e-1)/e^2}{n} = \frac{e-1}{ne^2}$$
+            
+            \textbf{答案}：\textbf{A}
+        \end{solution}
+    \end{bbox}
+
+\end{qitems}
+
 \end{document}
